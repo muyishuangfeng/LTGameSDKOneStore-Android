@@ -3,8 +3,11 @@ package com.gentop.ltgame.ltgameonestore;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.text.TextUtils;
 
+import com.gentop.ltgame.ltgamenet.base.Constants;
 import com.gentop.ltgame.ltgamenet.manager.LoginRealizeManager;
+import com.gentop.ltgame.ltgamenet.util.PreferencesUtils;
 import com.gentop.ltgame.ltgamesdkcore.common.Target;
 import com.gentop.ltgame.ltgamesdkcore.impl.OnRechargeListener;
 import com.gentop.ltgame.ltgamesdkcore.model.OneStoreResult;
@@ -39,7 +42,7 @@ public class OneStoreHelper {
     //商品ID
     private String mProductID;
     //请求码
-     int mRequestCode;
+    int mRequestCode;
     //自定义参数
     private Map<String, Object> mParams;
     //商品
@@ -47,9 +50,9 @@ public class OneStoreHelper {
     //商品类型
     private String mProductType;
 
-     OneStoreHelper(Activity activity, String mPublicKey, int payTest,
-                          String sku, String productID, String productType, int requestCode,
-                          Map<String, Object> mParams, OnRechargeListener mListener) {
+    OneStoreHelper(Activity activity, String mPublicKey, int payTest,
+                   String sku, String productID, String productType, int requestCode,
+                   Map<String, Object> mParams, OnRechargeListener mListener) {
         this.mActivityRef = new WeakReference<>(activity);
         this.mPublicKey = mPublicKey;
         this.mPayTest = payTest;
@@ -316,20 +319,24 @@ public class OneStoreHelper {
      * 获取乐推订单ID
      */
     private void getLTOrderID() {
-        LoginRealizeManager.createOrder(mActivityRef.get(), mProductID,
-                mParams, new OnRechargeListener() {
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(mActivityRef.get(), Constants.USER_API_TOKEN))) {
+            LoginRealizeManager.createOrder(mActivityRef.get(), mProductID,
+                    mParams, new OnRechargeListener() {
 
-                    @Override
-                    public void onState(Activity activity, RechargeResult result) {
-                        if (result != null) {
-                            if (result.getResultModel().getData().getLt_order_id() != null) {
-                                mOrderID = result.getResultModel().getData().getLt_order_id();
-                                launchPurchase();
+                        @Override
+                        public void onState(Activity activity, RechargeResult result) {
+                            if (result != null) {
+                                if (result.getResultModel().getData().getLt_order_id() != null) {
+                                    mOrderID = result.getResultModel().getData().getLt_order_id();
+                                    launchPurchase();
+                                }
                             }
-                        }
 
-                    }
-                });
+                        }
+                    });
+        } else {
+            mListener.onState(mActivityRef.get(), RechargeResult.failOf("order create failed:user token is empty"));
+        }
     }
 
     /**
