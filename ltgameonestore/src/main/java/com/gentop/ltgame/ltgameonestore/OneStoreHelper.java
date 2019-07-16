@@ -142,6 +142,8 @@ public class OneStoreHelper {
 
                                 @Override
                                 public void onError(IapResult iapResult) {
+                                    mListener.onState(mActivityRef.get(),
+                                            RechargeResult.stateOf(OneStoreResult.getResult(iapResult.getCode())));
                                 }
 
                                 @Override
@@ -167,6 +169,8 @@ public class OneStoreHelper {
 
                 @Override
                 public void onError(IapResult iapResult) {
+                    mListener.onState(mActivityRef.get(),
+                            RechargeResult.stateOf(OneStoreResult.getResult(iapResult.getCode())));
                 }
 
                 @Override
@@ -214,7 +218,8 @@ public class OneStoreHelper {
 
                     @Override
                     public void onError(IapResult iapResult) {
-
+                        mListener.onState(mActivityRef.get(),
+                                RechargeResult.stateOf(OneStoreResult.getResult(iapResult.getCode())));
                     }
 
                     @Override
@@ -290,6 +295,8 @@ public class OneStoreHelper {
 
                         @Override
                         public void onError(IapResult result) {
+                            mListener.onState(mActivityRef.get(),
+                                    RechargeResult.stateOf(OneStoreResult.getResult(result.getCode())));
                         }
 
                         @Override
