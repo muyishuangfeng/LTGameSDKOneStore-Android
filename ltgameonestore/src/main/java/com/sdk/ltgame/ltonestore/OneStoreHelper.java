@@ -1,13 +1,10 @@
-package com.gentop.ltgame.ltgameonestore;
+package com.sdk.ltgame.ltonestore;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
 
-import com.gentop.ltgame.ltgamenet.base.Constants;
-import com.gentop.ltgame.ltgamenet.manager.LoginRealizeManager;
-import com.gentop.ltgame.ltgamenet.util.PreferencesUtils;
 import com.gentop.ltgame.ltgamesdkcore.common.Target;
 import com.gentop.ltgame.ltgamesdkcore.impl.OnRechargeListener;
 import com.gentop.ltgame.ltgamesdkcore.model.OneStoreResult;
@@ -16,6 +13,9 @@ import com.google.gson.Gson;
 import com.onestore.iap.api.IapResult;
 import com.onestore.iap.api.PurchaseClient;
 import com.onestore.iap.api.PurchaseData;
+import com.sdk.ltgame.ltnet.base.Constants;
+import com.sdk.ltgame.ltnet.manager.LoginRealizeManager;
+import com.sdk.ltgame.ltnet.util.PreferencesUtils;
 
 import java.lang.ref.WeakReference;
 import java.util.List;

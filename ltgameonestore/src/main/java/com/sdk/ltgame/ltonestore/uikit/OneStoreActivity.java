@@ -1,4 +1,4 @@
-package com.gentop.ltgame.ltgameonestore.uikit;
+package com.sdk.ltgame.ltonestore.uikit;
 
 import com.gentop.ltgame.ltgamesdkcore.uikit.BaseActionActivity;
 

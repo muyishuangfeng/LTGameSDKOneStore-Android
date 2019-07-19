@@ -1,10 +1,10 @@
-package com.gentop.ltgame.ltgameonestore;
+package com.sdk.ltgame.ltonestore;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.gentop.ltgame.ltgameonestore.uikit.OneStoreActivity;
+import com.sdk.ltgame.ltonestore.uikit.OneStoreActivity;
 import com.gentop.ltgame.ltgamesdkcore.common.LTGameOptions;
 import com.gentop.ltgame.ltgamesdkcore.common.LTGameSdk;
 import com.gentop.ltgame.ltgamesdkcore.common.Target;
