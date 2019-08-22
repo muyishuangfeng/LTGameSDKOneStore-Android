@@ -27,7 +27,6 @@ public class OneStoreHelper {
     @SuppressLint("StaticFieldLeak")
     private static PurchaseClient mPurchaseClient;
     private static final int IAP_API_VERSION = 5;
-    private static final String TAG = OneStoreHelper.class.getSimpleName();
     //是否初始化
     private static boolean mIsInit = false;
     private WeakReference<Activity> mActivityRef;
