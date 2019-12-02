@@ -62,7 +62,7 @@ public class OneStorePlatform extends AbsPlatform {
         public IPlatform create(Context context, int target) {
             IPlatform platform = null;
             LTGameOptions options = LTGameSdk.options();
-            if (!LTGameUtil.isAnyEmpty(options.getLtAppId(), options.getLtAppKey(), options.getBaseUrl(),
+            if (!LTGameUtil.isAnyEmpty(options.getLtAppId(), options.getLtAppKey(),
                     options.getSku(), options.getGoodsID(), options.getmPublicKey(),
                     options.getGoodsType()) && options.getmParams() != null &&
                     options.getmPayTest() != -1 && options.getSelfRequestCode() != -1) {
